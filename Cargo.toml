@@ -1,11 +1,7 @@
 [package]
-name = "wgpu-example-02-hello-window"
-edition = "2021"
-rust-version = "1.84"
-publish = false
+name = "Rust-Multithreaded-Sudoku-Solver-Visualizer"
+version = "0.1.0"
+edition = "2024"
 
 [dependencies]
-env_logger = "0.11.8"
-pollster = "0.4"
-wgpu = "24.0.0"
-winit = { version = "0.30.8", features = ["android-native-activity"] }
+bevy = "0.16.0"
