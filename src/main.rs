@@ -1,10 +1,33 @@
 //! Shows how to render a polygonal [`Mesh`], generated from a [`Rectangle`] primitive, in a 2D scene.
 
+use bevy::app::*;
 use bevy::{color::palettes::basic::PURPLE, prelude::*};
+use bevy_tokio_tasks::tokio;
+
+pub mod async_algorithm;
+pub mod libs;
+pub mod renderer;
+pub mod shared_state;
+
+#[derive(States, Debug, Clone, Copy, Eq, PartialEq, Hash, Default)]
+pub enum AppState {
+    #[default]
+    Running,
+    Paused,
+}
 
 fn main() {
     App::new()
+        .add_plugins(bevy_tokio_tasks::TokioTasksPlugin {
+            make_runtime: Box::new(|| {
+                let mut runtime = tokio::runtime::Builder::new_multi_thread();
+                runtime.enable_all();
+                runtime.build().unwrap()
+            }),
+            ..bevy_tokio_tasks::TokioTasksPlugin::default()
+        })
         .add_plugins(DefaultPlugins)
+        .init_state::<AppState>()
         .add_systems(Startup, setup)
         .run();
 }
