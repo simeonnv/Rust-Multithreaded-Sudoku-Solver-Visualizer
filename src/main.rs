@@ -3,8 +3,10 @@
 use bevy::app::*;
 use bevy::{color::palettes::basic::PURPLE, prelude::*};
 use bevy_tokio_tasks::tokio;
+use libs::math::generate_random_diagonal_grid::generate_random_diagonal_grid;
 
 pub mod async_algorithm;
+pub mod error;
 pub mod libs;
 pub mod renderer;
 pub mod shared_state;
@@ -17,6 +19,9 @@ pub enum AppState {
 }
 
 fn main() {
+    let mut buffer: Vec<Vec<u8>> = vec![vec![0; 16 as usize]; 16 as usize];
+    generate_random_diagonal_grid(&mut buffer);
+
     App::new()
         .add_plugins(bevy_tokio_tasks::TokioTasksPlugin {
             make_runtime: Box::new(|| {
