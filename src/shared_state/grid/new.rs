@@ -1,6 +1,6 @@
-use crate::libs::{
-    math::generate_random_diagonal_grid::generate_random_diagonal_grid,
-    sudoku::check_if_grid_is_valid::check_if_grid_is_valid,
+use crate::libs::sudoku::{
+    check_if_grid_is_valid::check_if_grid_is_valid,
+    generate_random_diagonal_grid::generate_random_diagonal_grid,
 };
 
 use super::grid::Grid;

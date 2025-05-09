@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use lazy_static::lazy_static;
 
 pub struct Grid {
@@ -6,5 +8,5 @@ pub struct Grid {
 }
 
 lazy_static! {
-    pub static ref GRID: Grid = Grid::new(32, 0.5);
+    pub static ref GRID: Arc<Grid> = Arc::new(Grid::new(32, 0.5));
 }

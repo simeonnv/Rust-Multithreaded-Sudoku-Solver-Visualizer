@@ -13,8 +13,6 @@ pub fn generate_random_diagonal_grid(raw_buffer: &mut Vec<Vec<u8>>) {
         let start = block as usize * chunk_size as usize;
         let mut rand_nums_pt = 0;
 
-        dbg!(&rand_nums);
-
         for i in 0..chunk_size {
             for j in 0..chunk_size {
                 raw_buffer[start + i as usize][start + j as usize] = rand_nums[rand_nums_pt];
@@ -22,6 +20,4 @@ pub fn generate_random_diagonal_grid(raw_buffer: &mut Vec<Vec<u8>>) {
             }
         }
     }
-
-    dbg!(&raw_buffer);
 }
